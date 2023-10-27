@@ -41,11 +41,11 @@ export class HeroesService {
     return this.http.patch<Hero>(`${ this.baseUrl }/heroes/${hero.id}`, hero);
   }
   
-  deleteHero(hero:Hero):Observable<boolean>{
+  deleteHeroById(id:string):Observable<boolean>{
     
-    return this.http.delete(`${ this.baseUrl }/heroes/${hero.id}`).pipe(
+    return this.http.delete(`${ this.baseUrl }/heroes/${id}`).pipe(
+      map(resp=> true),
       catchError(err => of(false)),
-      map(resp=> true)
     );
   }
 
